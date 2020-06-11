@@ -1,25 +1,35 @@
-# Docker test app
+# Test web application
 
-### Setting up
+### Build app
 
- * Run:
+If you're running this app the first time, run this:
+
+* Build:
 
 	```
 	docker-compose build
-	``` 
- * Then:
+	```
+
+* Migrate database:
+
+    ```
+    docker-compose run web python manage.py migrate
+    ```
+
+* Add to the Wagtail your superuser:
+
+	```
+	docker-compose run web python manage.py createsuperuser
+	```
+
+### Run app
+
+If you've not run the app yet, go to the previous step. Else:
+
+* Run:
+
 	```
 	docker-compose up
 	```
 
-### To see:
-
- * Check [this webpage](https://localhost:8000) ```(https://localhost:8000)```
-
-### If there appears problems with database migration when app runs:
-
- * Run in your terminal when another runs the app:
-
-	```
-	docker-compose run db python src/dsweb/manage.py migrate
-	```
+* Visit [this web-page](http://127.0.0.1:8000) ```(http://127.0.0.1:8000)```
