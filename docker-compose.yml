@@ -5,7 +5,7 @@ services:
     build: .
     links:
       - db:db
-    command: python manage.py runserver 0.0.0.0:8000
+    command: /bin/sh web-init.sh
     volumes:
       - .:/code
     ports:
