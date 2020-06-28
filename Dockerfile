@@ -5,12 +5,14 @@ LABEL maintainer="hello@wagtail.io"
 # Set environment varibles
 ENV PYTHONUNBUFFERED 1
 ENV DJANGO_ENV dev
+ENV DJANGO_SU_NAME=admin
+ENV DJANGO_SU_EMAIL=smailden4@gmail.com
+ENV DJANGO_SU_PASSWORD=pass
 
 COPY ./requirements.txt /code/requirements.txt
 RUN pip install --upgrade pip
 # Install any needed packages specified in requirements.txt
 RUN pip install -r /code/requirements.txt
-RUN pip install gunicorn
 
 # Copy the current directory contents into the container at /code/
 COPY . /code/
@@ -20,6 +22,3 @@ WORKDIR /code/
 RUN useradd wagtail
 RUN chown -R wagtail /code
 USER wagtail
-
-EXPOSE 8000
-CMD exec gunicorn xweb.wsgi:application --bind 0.0.0.0:8000 --workers 3

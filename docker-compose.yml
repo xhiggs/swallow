@@ -5,7 +5,7 @@ services:
     build: .
     links:
       - db:db
-    command: /bin/sh web-init.sh
+    command: /bin/sh entrypoint.sh
     volumes:
       - .:/code
     ports:
