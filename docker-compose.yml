@@ -2,10 +2,10 @@ version: '3'
 
 services:
   web:
-    build: .
+    build: ./
     links:
       - db:db
-    command: /bin/sh entrypoint.sh
+    command: /bin/sh ./config/entrypoint.sh
     volumes:
       - .:/code
     ports:

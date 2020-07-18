@@ -9,10 +9,10 @@ ENV DJANGO_SU_NAME=admin
 ENV DJANGO_SU_EMAIL=smailden4@gmail.com
 ENV DJANGO_SU_PASSWORD=pass
 
-COPY ./requirements.txt /code/requirements.txt
+COPY config/requirements.txt /code/config/requirements.txt
 RUN pip install --upgrade pip
 # Install any needed packages specified in requirements.txt
-RUN pip install -r /code/requirements.txt
+RUN pip install -r /code/config/requirements.txt
 
 # Copy the current directory contents into the container at /code/
 COPY . /code/
